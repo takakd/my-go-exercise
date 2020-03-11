@@ -7,31 +7,33 @@ import (
 	"strconv"
 )
 
+type Alds113a struct {
+	row, col   [N]int
+	dpos, dneg [2*N - 1]int
+	X          [N][N]bool
+}
+
 const (
 	N        = 8
 	FREE     = -1
 	NOT_FREE = -2
 )
 
-var row, col [N]int
-var dpos, dneg [2*N - 1]int
-var X [N][N]bool
-
-func initialize() {
+func (a *Alds113a) initialize() {
 	for i := 0; i < N; i++ {
-		row[i], col[i] = FREE, FREE
+		a.row[i], a.col[i] = FREE, FREE
 	}
 	for i := 0; i < 2*N-1; i++ {
-		dpos[i], dneg[i] = FREE, FREE
+		a.dpos[i], a.dneg[i] = FREE, FREE
 	}
 }
 
-func print() {
+func (a *Alds113a) print() {
 	// 回答となる配置パターンの数だけprintがコールされる
 	for i := 0; i < N; i++ {
 		for j := 0; j < N; j++ {
-			if X[i][j] {
-				if row[i] != j {
+			if a.X[i][j] {
+				if a.row[i] != j {
 					// 回答の配置パターンの内、
 					// 入力条件として指定されているQの配置先を含まないものは表示しない
 					return
@@ -42,7 +44,7 @@ func print() {
 
 	for i := 0; i < N; i++ {
 		for j := 0; j < N; j++ {
-			if row[i] == j {
+			if a.row[i] == j {
 				fmt.Print("Q")
 			} else {
 				fmt.Print(".")
@@ -52,7 +54,7 @@ func print() {
 	}
 }
 
-func recursive(i int) {
+func (a *Alds113a) recursive(i int) {
 	if i == N {
 		// 最後まで到達したときは配置成功
 		// 結果を表示
@@ -61,29 +63,29 @@ func recursive(i int) {
 	}
 
 	for j := 0; j < N; j++ {
-		if row[j] == NOT_FREE || col[j] == NOT_FREE ||
-			dpos[i+j] == NOT_FREE || dneg[i-j+N-1] == NOT_FREE {
+		if a.row[j] == NOT_FREE || a.col[j] == NOT_FREE ||
+			a.dpos[i+j] == NOT_FREE || a.dneg[i-j+N-1] == NOT_FREE {
 			continue
 		}
 
 		// 1. 配置
-		row[i], col[j], dpos[i+j], dneg[i-j+N-1] = j, NOT_FREE, NOT_FREE, NOT_FREE
+		a.row[i], a.col[j], a.dpos[i+j], a.dneg[i-j+N-1] = j, NOT_FREE, NOT_FREE, NOT_FREE
 
-		recursive(i + 1)
+		a.recursive(i + 1)
 
 		// 1.の配置の状態をもとに戻して、次のマスに配置した時の配置パターンを検索
-		row[i], col[j], dpos[i+j], dneg[i-j+N-1] = FREE, FREE, FREE, FREE
+		a.row[i], a.col[j], a.dpos[i+j], a.dneg[i-j+N-1] = FREE, FREE, FREE, FREE
 	}
 
 	// 無理だった
 }
 
-func main() {
-	initialize()
+func (a *Alds113a) main() {
+	a.initialize()
 
 	for i := 0; i < N; i++ {
 		for j := 0; j < N; j++ {
-			X[i][j] = false
+			a.X[i][j] = false
 		}
 	}
 
@@ -101,9 +103,8 @@ func main() {
 		scanner.Scan()
 		c, _ = strconv.Atoi(scanner.Text())
 
-		X[r][c] = true
+		a.X[r][c] = true
 	}
 
-	recursive(0)
+	a.recursive(0)
 }
-

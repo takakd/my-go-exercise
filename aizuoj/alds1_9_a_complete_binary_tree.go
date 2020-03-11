@@ -4,7 +4,10 @@ import (
 	"fmt"
 )
 
-func scanInput() (n int, nums []int) {
+type Alds19a struct {
+}
+
+func (a *Alds19a) scanInput() (n int, nums []int) {
 	fmt.Scanf("%d", &n)
 	nums = make([]int, n)
 	for i := 0; i < n; i++ {
@@ -13,8 +16,8 @@ func scanInput() (n int, nums []int) {
 	return
 }
 
-func main() {
-	_, nums := scanInput()
+func (a *Alds19a) main() {
+	_, nums := a.scanInput()
 	length := len(nums)
 
 	for i, v := range nums {
@@ -22,19 +25,18 @@ func main() {
 
 		parent := node / 2
 		left := 2 * node
-		right := 2 * node + 1
+		right := 2*node + 1
 
 		fmt.Printf("node %d: key = %d,", node, v)
 		if 0 < parent && parent <= length {
-			fmt.Printf(" parent key = %d,", nums[parent - 1])
+			fmt.Printf(" parent key = %d,", nums[parent-1])
 		}
 		if left <= length {
-			fmt.Printf(" left key = %d,", nums[left - 1])
+			fmt.Printf(" left key = %d,", nums[left-1])
 		}
 		if right <= length {
-			fmt.Printf(" right key = %d,", nums[right - 1])
+			fmt.Printf(" right key = %d,", nums[right-1])
 		}
 		fmt.Println(" ")
 	}
 }
-

@@ -5,7 +5,10 @@ import (
 	"strings"
 )
 
-func scanInput() (n int, slice []int) {
+type Alds11a struct {
+}
+
+func (a *Alds11a) scanInput() (n int, slice []int) {
 	fmt.Scanf("%d", &n)
 	slice = make([]int, n)
 	for i := 0; i < n; i++ {
@@ -14,19 +17,19 @@ func scanInput() (n int, slice []int) {
 	return
 }
 
-func printSlice(slice []int) {
+func (a *Alds11a) printSlice(slice []int) {
 	fmt.Println(strings.Trim(strings.Join(strings.Fields(fmt.Sprint(slice)), " "), "[]"))
 }
 
-func main() {
-	_, slice := scanInput()
+func (a *Alds11a) main() {
+	_, slice := a.scanInput()
 
-	printSlice(slice)
+	a.printSlice(slice)
 
-	solve(slice)
+	a.solve(slice)
 }
 
-func solve(nums []int) {
+func (a *Alds11a) solve(nums []int) {
 	l := len(nums)
 	for i := 1; i < l; i++ {
 		v := nums[i]
@@ -37,7 +40,6 @@ func solve(nums []int) {
 		}
 		nums[j+1] = v
 
-		printSlice(nums)
+		a.printSlice(nums)
 	}
 }
-

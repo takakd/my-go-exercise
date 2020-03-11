@@ -1,13 +1,16 @@
 package main
 
 import (
-	"fmt"
 	"bufio"
+	"fmt"
 	"os"
 	"strconv"
 )
 
-func scanInput() (n int, nums []int) {
+type Alds19b struct {
+}
+
+func (a *Alds19b) scanInput() (n int, nums []int) {
 	//// NG
 	//fmt.Scanf("%d", &n)
 	//nums = make([]int, n)
@@ -28,7 +31,7 @@ func scanInput() (n int, nums []int) {
 	return
 }
 
-func maxHeapify(nums *[]int, length int, previousMax int) {
+func (a *Alds19b) maxHeapify(nums *[]int, length int, previousMax int) {
 	parent := previousMax - 1
 	left := 2*previousMax - 1
 	right := 2*previousMax + 1 - 1
@@ -47,19 +50,18 @@ func maxHeapify(nums *[]int, length int, previousMax int) {
 
 	if largest != parent {
 		(*nums)[largest], (*nums)[parent] = (*nums)[parent], (*nums)[largest]
-		maxHeapify(nums, length, largest+1)
+		a.maxHeapify(nums, length, largest+1)
 	}
 }
 
-func main() {
-	length, nums := scanInput()
+func (a *Alds19b) main() {
+	length, nums := a.scanInput()
 
 	for i := length / 2; i >= 1; i-- {
-		maxHeapify(&nums, length, i)
+		a.maxHeapify(&nums, length, i)
 	}
 	for _, v := range nums {
 		fmt.Printf(" %d", v)
 	}
 	fmt.Println("")
 }
-

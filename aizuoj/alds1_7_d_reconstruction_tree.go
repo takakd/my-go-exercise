@@ -5,7 +5,10 @@ import (
 	"strings"
 )
 
-func scanInput() (n int, pre []int, in []int) {
+type Alds17d struct {
+}
+
+func (a *Alds17d) scanInput() (n int, pre []int, in []int) {
 	fmt.Scanf("%d", &n)
 	pre = make([]int, n)
 	in = make([]int, n)
@@ -18,21 +21,21 @@ func scanInput() (n int, pre []int, in []int) {
 	return
 }
 
-func printSlice(slice []int) {
+func (a *Alds17d) printSlice(slice []int) {
 	fmt.Println(strings.Trim(strings.Join(strings.Fields(fmt.Sprint(slice)), " "), "[]"))
 }
 
-func main() {
-	n, pre, in := scanInput()
+func (a *Alds17d) main() {
+	n, pre, in := a.scanInput()
 	post := make([]int, 0, n)
 	parent := 0
 
-	walk(0, len(pre)-1, &parent, pre, in, &post)
+	a.walk(0, len(pre)-1, &parent, pre, in, &post)
 
-	printSlice(post)
+	a.printSlice(post)
 }
 
-func walk(left, right int, parent *int, pre, in []int, post *[]int) {
+func (a *Alds17d) walk(left, right int, parent *int, pre, in []int, post *[]int) {
 	if left > right {
 		return
 	}
@@ -48,9 +51,8 @@ func walk(left, right int, parent *int, pre, in []int, post *[]int) {
 		}
 	}
 
-	walk(left, idx-1, parent, pre, in, post)
-	walk(idx+1, right, parent, pre, in, post)
+	a.walk(left, idx-1, parent, pre, in, post)
+	a.walk(idx+1, right, parent, pre, in, post)
 
 	*post = append(*post, dlm)
 }
-
