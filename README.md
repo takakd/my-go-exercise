@@ -14,11 +14,34 @@ with [プログラミングコンテスト攻略のためのアルゴリズム�
 
 ## Note
 
+### Struct constructor
+
+```go
+type StructName struct {
+	value int
+}
+
+// constructor
+func NewStructName() *StructName {
+    s := &StructName()
+    // or s := new(StructName)
+    
+    s.value = 123
+    return s
+}
+
+// with parameter
+func NewStructName(value int) *StructName {
+    s := &StructName{value :value}
+    return s
+}
+```
+
+@ref: https://gobyexample.com/structs
+
 ### Variable declarations
 
-https://golang.org/ref/spec#Variable_declarations
-
-```
+```go
 var i1 int
 var i2 int
 var i3 int
@@ -27,3 +50,5 @@ var i3 int
 
 var i1, i2, i3 int
 ```
+
+@ref: https://golang.org/ref/spec#Variable_declarations
