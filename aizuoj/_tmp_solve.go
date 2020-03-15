@@ -16,7 +16,7 @@ type Alds13d struct {
 
 func (a *Alds13d) main() {
 	scanner := bufio.NewScanner(os.Stdin)
-	fmt.Print(a.solve(scanner))
+	fmt.Println(a.solve(scanner))
 }
 
 func (a *Alds13d) solve(scanner *bufio.Scanner) string {
