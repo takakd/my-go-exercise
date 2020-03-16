@@ -7,20 +7,20 @@ import (
 	"strconv"
 )
 
-type Alds14d struct {
+type Alds14a struct {
 }
 
 //func main() {
-//	a := &Alds14d{}
+//	a := &Alds14a{}
 //	a.main()
 //}
 
-func (a *Alds14d) main() {
+func (a *Alds14a) main() {
 	scanner := bufio.NewScanner(os.Stdin)
 	fmt.Println(a.solve(scanner))
 }
 
-func (a *Alds14d) solve(scanner *bufio.Scanner) int {
+func (a *Alds14a) solve(scanner *bufio.Scanner) int {
 
 	scanner.Split(bufio.ScanWords)
 

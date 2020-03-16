@@ -14,10 +14,10 @@ type Alds14c struct {
 	length int
 }
 
-func main() {
-	a := NewAlds14c()
-	a.main()
-}
+//func main() {
+//	a := NewAlds14c()
+//	a.main()
+//}
 
 func NewAlds14c() *Alds14c {
 	a := &Alds14c{}

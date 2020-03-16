@@ -6,20 +6,25 @@ import (
 	"os"
 )
 
-type Alds13d struct {
+type AldsTmp struct {
 }
 
 //func main() {
-//	a := &Alds13d{}
+//	a := NewAldsTmp()
 //	a.main()
 //}
 
-func (a *Alds13d) main() {
+func NewAldsTmp() *AldsTmp {
+	a := &AldsTmp{}
+	return a
+}
+
+func (a *AldsTmp) main() {
 	scanner := bufio.NewScanner(os.Stdin)
 	fmt.Println(a.solve(scanner))
 }
 
-func (a *Alds13d) solve(scanner *bufio.Scanner) string {
+func (a *AldsTmp) solve(scanner *bufio.Scanner) string {
 
 	sum := 0
 	s1 := make([]int, 0)

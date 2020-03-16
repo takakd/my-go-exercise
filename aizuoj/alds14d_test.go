@@ -6,23 +6,25 @@ import (
 	"bytes"
 )
 
-func TestTmp(t *testing.T) {
+func Test14d(t *testing.T) {
 
 	// input
-	s := `\\///\_/\/\\\\/_/\\///__\\\_\\/_\/_/\`
+	s := `5 3
+8
+1
+7
+3
+9`
 	r := bytes.NewReader([]byte(s))
 	scanner := bufio.NewScanner(r)
 
 	// solve
-	a := NewAldsTmp
+	a := NewAlds14d()
 	result := a.solve(scanner)
 
 	// check
-	ans :=
-		`35
-5 4 2 1 19 9
-`
+	ans := 10
 	if result != ans {
-		t.Errorf("result was incorrect, got: %s, want: %s.", result, ans)
+		t.Errorf("result was incorrect, got: %d, want: %d.", result, ans)
 	}
 }

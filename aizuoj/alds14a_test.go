@@ -6,7 +6,7 @@ import (
 	"bytes"
 )
 
-func Test14d(t *testing.T) {
+func Test14a(t *testing.T) {
 
 	// input
 	s := `5
@@ -17,7 +17,7 @@ func Test14d(t *testing.T) {
 	scanner := bufio.NewScanner(r)
 
 	// solve
-	a := Alds14d{}
+	a := Alds14a{}
 	result := a.solve(scanner)
 
 	// check
