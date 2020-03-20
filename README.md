@@ -21,6 +21,13 @@ english | japanese
 --- | ---
 Variadic function | 可変長引数
 
+### File handling
+
+```
+# use ioutil
+error := ioutil.WriteFile(filename, body 0600)
+body, _ := ioutil.ReadFile(filename)
+```
 
 ### Variadic function
 
