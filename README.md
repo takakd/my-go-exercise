@@ -14,6 +14,36 @@ with [プログラミングコンテスト攻略のためのアルゴリズム�
 
 ## Note
 
+### English
+
+
+english | japanese
+--- | ---
+Variadic function | 可変長引数
+
+
+### Variadic function
+
+```
+func f(a ... int) {
+    for _, v := range a {
+        fmt.Println(v)
+    }
+}
+```
+
+@ref: https://gobyexample.com/variadic-functions
+
+### interface{}
+
+```
+func some(i interface{}) {
+    s := i.(string)
+}
+```
+
+@ref: https://tour.golang.org/methods/16
+
 ### Struct constructor
 
 ```go
