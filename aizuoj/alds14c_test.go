@@ -1,9 +1,9 @@
 package main
 
 import (
-	"testing"
 	"bufio"
 	"bytes"
+	"testing"
 )
 
 func Test14c(t *testing.T) {

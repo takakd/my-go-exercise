@@ -1,8 +1,8 @@
 package main
 
 import (
-	"fmt"
 	"bufio"
+	"fmt"
 	"os"
 	"strconv"
 )
@@ -89,21 +89,19 @@ func (a *Alds14d) solve(scanner *bufio.Scanner) int {
 	left := 1
 	right := 100000 * 100000
 	mid := (left + right) / 2
-	for {
+	for right-left > 0 {
 		num := a.calcMaxPacketNumber(mid, k, n)
 
-		// right(末尾)をインデックスに含むので、right(末尾)の場合は=midで含め、left(開始)は+1して含めない
-		if k == num {
-			break
-		} else if k > num {
-			// p(mid) is grater
+		if n == num {
+			// 必要な個数を乗せることができるので、Pを下げて検索
+			// i == nの判定を行っているので、numがnを超えることはない
 			right = mid
 		} else {
+			// Pが不足するので、より大きい値で検索
 			left = mid + 1
 		}
 
 		mid = (left + right) / 2
-		fmt.Println(num, k, mid)
 	}
 
 	return mid
