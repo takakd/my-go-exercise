@@ -7,6 +7,7 @@ import (
 )
 
 type AldsTmp struct {
+	f func(a ...interface{}) (n int, err error)
 }
 
 //func main() {
@@ -24,63 +25,17 @@ func (a *AldsTmp) main() {
 	fmt.Println(a.solve(scanner))
 }
 
-func (a *AldsTmp) solve(scanner *bufio.Scanner) string {
+func (a *AldsTmp) handle(scanner *bufio.Scanner, f func(a ...interface{}) (n int, err error)) {
 
-	sum := 0
-	s1 := make([]int, 0)
-	s2 := make([]struct {
-		I int
-		S int
-	}, 0)
+	a.f = f
 
-	i := 0
 	scanner.Split(bufio.ScanWords)
+
 	scanner.Scan()
-	for _, r := range scanner.Text() {
-		c := string(r)
+	a.n, _ = strconv.Atoi(scanner.Text())
 
-		if c == "\\" {
-			s1 = append(s1, i)
-
-		} else if c == "/" && len(s1) > 0 {
-			j := s1[len(s1)-1]
-			s1 = s1[:len(s1)-1]
-			s := i - j
-
-			sum += s
-
-			t := s
-			if len(s2) > 0 {
-				v := s2[len(s2)-1]
-				for v.I > j {
-					t += v.S
-					s2 = s2[:len(s2)-1]
-
-					if len(s2) == 0 {
-						break
-					}
-
-					v = s2[len(s2)-1]
-				}
-			}
-			s2 = append(s2, struct {
-				I int
-				S int
-			}{j, t})
-		}
-
-		scanner.Scan()
-		c = scanner.Text()
-		i++
-	}
-
-	// output
-	result := fmt.Sprintln(sum)
-	result += fmt.Sprintf("%d", len(s2))
-	for _, v := range s2 {
-		result += fmt.Sprintf(" %d", v.S)
-	}
-	result += fmt.Sprintln()
-
-	return result
+	// a.solve(scanner)
 }
+
+//func (a *AldsTmp) solve(scanner *bufio.Scanner) string {
+//}

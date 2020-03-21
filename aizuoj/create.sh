@@ -18,4 +18,5 @@ name=$(echo $name | gsed -E "s/^([a-z])/\U\1/g")
 
 #v="ho ge"; echo ${v^}→Ho geo
 gsed -i -e "s/AldsTmp/${name}/g" "${1}.go"
+gsed -i -e "s/AldsTmp/${name}/g" "${1}_test.go"
 gsed -i -e "s/TestTmp/Test${name}/g" "${1}_test.go"

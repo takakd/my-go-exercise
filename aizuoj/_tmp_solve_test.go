@@ -14,6 +14,11 @@ func TestTmp(t *testing.T) {
 	scanner := bufio.NewScanner(r)
 
 	// solve
+	res := ""
+	f := func(a ...interface{}) (n int, err error) {
+		res += a[0].(string) + "\n"
+		return 0, nil
+	}
 	a := NewAldsTmp
 	result := a.solve(scanner)
 
