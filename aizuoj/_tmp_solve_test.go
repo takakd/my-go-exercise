@@ -19,8 +19,8 @@ func TestTmp(t *testing.T) {
 		res += a[0].(string) + "\n"
 		return 0, nil
 	}
-	a := NewAldsTmp
-	result := a.solve(scanner)
+	a := NewAldsTmp()
+	a.handle(scanner, fmt.Println)
 
 	// check
 	ans :=

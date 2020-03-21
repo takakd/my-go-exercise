@@ -22,7 +22,7 @@ func NewAldsTmp() *AldsTmp {
 
 func (a *AldsTmp) main() {
 	scanner := bufio.NewScanner(os.Stdin)
-	fmt.Println(a.solve(scanner))
+	a.handle(scanner, fmt.Println)
 }
 
 func (a *AldsTmp) handle(scanner *bufio.Scanner, f func(a ...interface{}) (n int, err error)) {
@@ -32,7 +32,7 @@ func (a *AldsTmp) handle(scanner *bufio.Scanner, f func(a ...interface{}) (n int
 	scanner.Split(bufio.ScanWords)
 
 	scanner.Scan()
-	a.n, _ = strconv.Atoi(scanner.Text())
+	// n, _ = strconv.Atoi(scanner.Text())
 
 	// a.solve(scanner)
 }
