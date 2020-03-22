@@ -7,7 +7,8 @@ import (
 )
 
 type AldsTmp struct {
-	f func(a ...interface{}) (n int, err error)
+	scanner *bufio.Scanner
+	f       func(a ...interface{}) (n int, err error)
 }
 
 //func main() {
@@ -27,6 +28,7 @@ func (a *AldsTmp) main() {
 
 func (a *AldsTmp) handle(scanner *bufio.Scanner, f func(a ...interface{}) (n int, err error)) {
 
+	a.scanner = scanner
 	a.f = f
 
 	scanner.Split(bufio.ScanWords)
@@ -34,8 +36,8 @@ func (a *AldsTmp) handle(scanner *bufio.Scanner, f func(a ...interface{}) (n int
 	scanner.Scan()
 	// n, _ = strconv.Atoi(scanner.Text())
 
-	// a.solve(scanner)
+	// a.solve()
 }
 
-//func (a *AldsTmp) solve(scanner *bufio.Scanner) string {
+//func (a *AldsTmp) solve() string {
 //}
