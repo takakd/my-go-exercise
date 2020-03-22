@@ -89,3 +89,24 @@ var i1, i2, i3 int
 ```
 
 @ref: https://golang.org/ref/spec#Variable_declarations
+
+### Tips
+
+```go
+// この処理だとTLE
+i := 0
+f(strconv.Itoa(a.S[i]))
+i++
+for i < len(a.S) {
+	f(" " + strconv.Itoa(a.S[i]))
+	i++
+}
+f("\n")
+f(strconv.Itoa(a.compareCount))
+f("\n")
+
+// これだとOK
+res := strings.TrimRight(fmt.Sprintf("%+v", a.S)[1:], "]") + "\n"
+res += strconv.Itoa(a.compareCount) + "\n"
+f(res)
+```
