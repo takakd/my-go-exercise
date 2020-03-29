@@ -20,7 +20,7 @@ func TestTmp(t *testing.T) {
 		return 0, nil
 	}
 	a := NewAldsTmp()
-	a.handle(scanner, fmt.Println)
+	a.handle(scanner, f)
 
 	// check
 	ans :=
